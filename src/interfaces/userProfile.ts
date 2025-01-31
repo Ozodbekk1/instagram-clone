@@ -1,5 +1,3 @@
-// import { Url } from "url"
-
 export type User = {
   username: string
   biography: string,
@@ -11,7 +9,7 @@ export type User = {
   full_name: string
   has_anonymous_profile_picture: boolean
   has_highlight_reels: number
-  profile_pic_url : string // this maybe also string
+  profile_pic_url : string 
   id: string
   is_new_to_instagram: boolean
   is_potential_business: boolean
@@ -22,11 +20,3 @@ export type User = {
   media_count: number
   show_account_transparency_details: boolean
 }
-
-// export interface HdProfilePicUrlInfo {
-
-//   url: string;
-
-//   // other properties
-
-// }
