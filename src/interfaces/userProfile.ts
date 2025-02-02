@@ -1,9 +1,9 @@
 export type User = {
-  username: string
+  username: string,
   biography: string,
-  category: string
-  category_id: number
-  contact_phone_number: number
+  category: string,
+  category_id: number,
+  contact_phone_number: number,
   follower_count: number
   following_count: number
   full_name: string
