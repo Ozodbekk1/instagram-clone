@@ -48,12 +48,12 @@ const Info = (): JSX.Element => {
   }, [searchUser]);
 
   return (
-    <div>
+    <div className="background">
       <Input placeholder="Search User"
             type="text"
             onChange={(e) => setSearchUser(e.target.value)}
             value={searchUser}
-            className=" bg-black outline-none w-96 mx-auto my-4 p-3 rounded-md" />
+            className=" bg-black outline-none w-96 mx-auto my-4 p-3 rounded-md text-white" />
       <div>
         {loading ? (
           <HStack gap="5">
