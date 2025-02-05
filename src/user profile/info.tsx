@@ -6,18 +6,14 @@ import NewReleasesIcon from "@mui/icons-material/NewReleases";
 import { Stack } from "@chakra-ui/react";
 import { Skeleton, SkeletonCircle } from "@/components/ui/skeleton";
 import { HStack } from "@chakra-ui/react";
-import { Input } from '../components/ui'
+import { Input } from "../components/ui";
 
 const Info = (): JSX.Element => {
   const [data, setData] = useState<User | null>(null);
-  const [searchUser, setSearchUser] = useState<string>('occoffm');
+  const [searchUser, setSearchUser] = useState<string>("occoffm");
   const [loading, setLoading] = useState<boolean>(false);
-
-   
-
   useEffect(() => {
     if (!searchUser) return;
-
     const getData = async () => {
       setLoading(true);
       try {
@@ -41,19 +37,19 @@ const Info = (): JSX.Element => {
         setLoading(false);
       }
     };
-
     const delayFetch = setTimeout(getData, 1000);
-
     return () => clearTimeout(delayFetch);
   }, [searchUser]);
 
   return (
     <div className="background">
-      <Input placeholder="Search User"
-            type="text"
-            onChange={(e) => setSearchUser(e.target.value)}
-            value={searchUser}
-            className=" bg-black outline-none w-96 mx-auto my-4 p-3 rounded-md text-white" />
+      <Input
+        placeholder="Search User"
+        type="text"
+        onChange={(e) => setSearchUser(e.target.value)}
+        value={searchUser}
+        className=" bg-black outline-none w-96 mx-auto my-4 p-3 rounded-md text-white"
+      />
       <div>
         {loading ? (
           <HStack gap="5">
@@ -64,28 +60,25 @@ const Info = (): JSX.Element => {
             </Stack>
           </HStack>
         ) : data ? (
-          <div>
-          <h1>Phone Number: {data.contact_phone_number}</h1>
-            <h1>Username: {data.username}</h1>
-            <h1>Full Name: {data.full_name}</h1>
-            <h1>Biography: {data.biography}</h1>
-            <h1>Category: {data.category}</h1>
-            <h1>Category Id: {data.category_id}</h1>
-            <h1>Media Count: {data.media_count}</h1>
-            <h1>Followers: {data.follower_count}</h1>
-            <h1>Following: {data.following_count}</h1>
-            <h1>Has Highlight Reels: {data.has_highlight_reels}</h1>
-            <h1>
-              Is New To Instagram:{" "}
-              {data.is_new_to_instagram ? "New to Instagram" : ""}
-            </h1>
-            <h1>Is Private: {data.is_private ? "private" : "public"}</h1>
-            <h1>
-              Is Verified:{" "}
+          <div className="flex flex-col  justify-items-start text-center">
+            <h1 className="text-2xl my-3">
+              {data.username}{" "}
               {data.is_verified ? <VerifiedIcon /> : <NewReleasesIcon />}
             </h1>
+            <div className="flex flex-row my-4 mx-4 text-center justify-center gap-3">
+              <h1>Posts {data.media_count}</h1>
+              <h1>Followers {data.follower_count}</h1>
+              <h1>Following {data.following_count}</h1>
+            </div>
+            <h1>{data.full_name}</h1>
+            <h1>{data.biography}</h1>
+            <h1>{data.category}</h1>
+            <h1> {data.category_id}</h1>
+            <h1>{data.has_highlight_reels}</h1>
+            <h1>{data.is_new_to_instagram ? "New to Instagram" : ""}</h1>
+            <h1>{data.is_private ? "Private" : ""}</h1>
+            <h1> </h1>
             <h1>
-              Is Whatsapp Linked:{" "}
               {data.is_whatsapp_linked
                 ? "Linked to whatsapp"
                 : "Not Linked to whatsapp"}
